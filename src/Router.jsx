@@ -2,7 +2,7 @@ import App from './App';
 import Home from 'pages/Home';
 import Detail from 'pages/Detail';
 import NotFound from 'pages/NotFound';
-const { createBrowserRouter } = require('react-router-dom');
+import { createBrowserRouter } from 'react-router-dom';
 
 export const router = createBrowserRouter(
   [
