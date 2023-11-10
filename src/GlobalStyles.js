@@ -57,6 +57,18 @@ input, button {
 * {
   box-sizing: border-box;
 }
+body {
+  background: rgb(0,150,199);
+  background: linear-gradient(185deg, rgba(0,150,199,1) 0%, rgba(0,180,216,1) 25%, rgba(72,202,228,1) 51%, rgba(144,224,239,1) 76%, rgba(173,232,244,1) 100%);
+}
+
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+body::-webkit-scrollbar {
+  display: none;
+}
 `;
 
 export default GlobalStyles;
