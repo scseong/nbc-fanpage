@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 export const StPolaroid = styled.div`
   padding: 1rem;
-  background-color: #fafafa;
+  background-color: ${(props) => (props.$clicked ? COLORS.blue.gulf : 'white')};
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: transform 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   border: 5px double skyblue;
 
   div > img {

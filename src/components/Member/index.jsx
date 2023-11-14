@@ -1,9 +1,9 @@
 import React from 'react';
-import Polaroid from 'components/Polaroid';
+import MemberList from 'components/MemberList';
 import { MEMBERS } from 'constants/member';
 import { StSection } from './styles';
 
-export default function Member() {
+export default function Member({ memberId, onUpdate }) {
   return (
     <StSection>
       <h2>MEMBER</h2>
@@ -16,7 +16,14 @@ export default function Member() {
         }}
       >
         {MEMBERS.map((member) => (
-          <Polaroid key={member.id}>{member.name}</Polaroid>
+          <MemberList
+            key={member.id}
+            id={member.id}
+            clicked={member.id === memberId}
+            onUpdate={onUpdate}
+          >
+            {member.englishName}
+          </MemberList>
         ))}
       </ul>
     </StSection>
