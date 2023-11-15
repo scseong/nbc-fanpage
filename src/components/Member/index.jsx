@@ -18,8 +18,8 @@ export default function Member({ memberId, onUpdate }) {
         {MEMBERS.map((member) => (
           <MemberList
             key={member.id}
-            id={member.id}
-            clicked={member.id === memberId}
+            id={member.englishName}
+            clicked={member.englishName === memberId}
             onUpdate={onUpdate}
           >
             {member.englishName}

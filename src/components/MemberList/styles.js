@@ -43,7 +43,7 @@ export const StPolaroid = styled.div`
 
     div > p {
       background: none;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     &:nth-child(odd) {

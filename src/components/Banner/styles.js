@@ -13,7 +13,6 @@ export const StBanner = styled.section`
     background-size: cover;
 
     @media screen and (max-width: 800px) {
-      height: 40vh;
       background-size: 100% 100%;
     }
 

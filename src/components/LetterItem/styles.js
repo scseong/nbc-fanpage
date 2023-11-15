@@ -6,9 +6,6 @@ export const Letter = styled.div`
   margin-bottom: 20px;
 
   & > div {
-    display: flex;
-    flex-direction: column;
-
     & > div {
       display: flex;
       align-items: flex-end;
@@ -42,6 +39,7 @@ export const Letter = styled.div`
   @media screen and (max-width: 800px) {
     div > div {
       flex-direction: column;
+      align-items: flex-start;
       gap: 0.4rem;
     }
 

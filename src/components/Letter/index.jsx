@@ -1,23 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MEMBERS } from 'constants/member';
 import LetterItem from 'components/LetterItem';
 import * as S from './styles';
 
-export default function Letter({ memberId }) {
-  const memberData = MEMBERS.filter((member) => member.id === memberId)[0];
-  const [data, setData] = useState();
-  const filterdData = data?.filter((v) => v.writedTo === memberData.koreanName);
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetch('/mock/fakeData.json');
-      const res = await data.json();
-
-      setData(res);
-    }
-
-    fetchData();
-  }, []);
+export default function Letter({ memberId, messages }) {
+  const memberData = MEMBERS.filter(
+    (member) => member.englishName === memberId,
+  )[0];
+  const filterdData = messages?.filter(
+    (v) => v.writedTo === memberData.englishName,
+  );
 
   return (
     <S.Letter>
