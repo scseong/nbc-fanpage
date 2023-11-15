@@ -6,6 +6,7 @@ import * as S from './styles';
 
 export default function AddLetter({ memberId, handleAdd }) {
   const member = MEMBERS.filter((m) => memberId === m.englishName)[0];
+
   const [message, setMessage] = useState({
     nickname: '',
     content: '',
