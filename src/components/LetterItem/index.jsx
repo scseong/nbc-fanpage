@@ -1,16 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StLetter = styled.div`
-  display: flex;
-
-  img {
-    width: 50px;
-    height: 50px;
-    border-radius: 20px;
-    margin-right: 10px;
-  }
-`;
+import * as S from './styles';
 
 export default function LetterItem({
   nickname,
@@ -20,15 +9,15 @@ export default function LetterItem({
   id,
 }) {
   return (
-    <StLetter>
-      <img src={avatar} alt="" />
+    <S.Letter>
+      <img src={!avatar ? require(`assets/default.jpg`) : avatar} alt="" />
       <div>
         <h4>{nickname}</h4>
         <div>
-          <p>{content}</p>
-          <span>{new Date(createdAt).toLocaleString().substring(2, 20)}</span>
+          <span title={content}>{content}</span>
+          <h5>{new Date(createdAt).toLocaleString().substring(2, 21)}</h5>
         </div>
       </div>
-    </StLetter>
+    </S.Letter>
   );
 }

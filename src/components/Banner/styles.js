@@ -7,10 +7,18 @@ export const StBanner = styled.section`
   /* TODO: Image resize */
   div {
     margin: 0 auto;
-    width: 90vw;
-    height: 70vh;
+    height: 60vh;
     border: 6px double #fff;
     background: no-repeat url(${bg});
     background-size: cover;
+
+    @media screen and (max-width: 800px) {
+      height: 40vh;
+      background-size: 100% 100%;
+    }
+
+    @media screen and (min-width: 1600px) {
+      background-size: 100% 100%;
+    }
   }
 `;

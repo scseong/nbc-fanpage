@@ -1,6 +1,10 @@
 import { COLORS } from 'constants/colors';
 import styled from 'styled-components';
 
+export const Letter = styled.section`
+  padding: 3rem;
+`;
+
 export const H3 = styled.h3`
   margin-bottom: 2rem;
   padding: 0.7rem 1rem;

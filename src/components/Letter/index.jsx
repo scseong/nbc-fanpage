@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MEMBERS } from 'constants/member';
 import LetterItem from 'components/LetterItem';
-import { H3 } from './styles';
+import * as S from './styles';
 
 export default function Letter({ memberId }) {
   const memberData = MEMBERS.filter((member) => member.id === memberId)[0];
@@ -20,8 +20,8 @@ export default function Letter({ memberId }) {
   }, []);
 
   return (
-    <div>
-      <H3>To. {memberData.englishName}</H3>
+    <S.Letter>
+      <S.H3>To. {memberData.englishName}</S.H3>
       {filterdData?.map((item) => {
         const { nickname, avatar, content, writedTo, createdAt, id } = item;
         return (
@@ -36,6 +36,6 @@ export default function Letter({ memberId }) {
           />
         );
       })}
-    </div>
+    </S.Letter>
   );
 }

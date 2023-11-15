@@ -1,13 +1,16 @@
 import React from 'react';
 import { StHeader } from './styles';
 import { ReactComponent as Logo } from 'assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
     <StHeader>
       <nav>
         <ul>
-          <li>home</li>
+          <Link to="/">
+            <li>home</li>
+          </Link>
           <li>member</li>
         </ul>
         <h1>
