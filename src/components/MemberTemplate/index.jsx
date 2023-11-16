@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Member from 'components/Member';
 import Letter from 'components/Letter';
 import { MEMBERS } from 'constants/member';
@@ -17,8 +17,8 @@ export default function MemberTemplate() {
   return (
     <>
       <Member memberId={memberId} onUpdate={handleUpdate} />
-      <AddLetter memberId={memberId} handleAdd={handleAdd} />
       <Letter memberId={memberId} messages={messages} />
+      <AddLetter memberId={memberId} handleAdd={handleAdd} />
     </>
   );
 }

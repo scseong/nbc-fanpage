@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from 'constants/colors';
 
 export const AddLetter = styled.section`
-  padding: 0 3rem;
+  padding: 0 3rem 3rem;
 
   form {
     display: flex;

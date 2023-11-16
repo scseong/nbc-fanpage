@@ -67,7 +67,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 #root {
-	max-width: 1400px;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 @font-face {
@@ -81,8 +81,9 @@ body::-webkit-scrollbar {
 	font-weight: 700;
 }
 body {
+	min-height: 100vh;
 	font-family: 'PyeongChangPeace';
-}
+}    
 `;
 
 export default GlobalStyles;

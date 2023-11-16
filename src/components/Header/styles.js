@@ -18,6 +18,11 @@ export const StHeader = styled.header`
 
       li {
         text-transform: uppercase;
+
+        a.active {
+          color: orange;
+          text-shadow: 1px 1px 10px orange;
+        }
       }
     }
     ul:last-child {
@@ -35,6 +40,12 @@ export const StHeader = styled.header`
 
       svg:hover {
         stroke-width: 3;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      svg {
+        width: 140px;
+        height: 60px;
       }
     }
   }
