@@ -1,3 +1,4 @@
+import { COLORS } from 'constants/colors';
 import styled from 'styled-components';
 
 export const StHeader = styled.header`
@@ -20,8 +21,8 @@ export const StHeader = styled.header`
         text-transform: uppercase;
 
         a.active {
-          color: orange;
-          text-shadow: 1px 1px 10px orange;
+          color: ${COLORS.blue.congress};
+          text-shadow: 1px 1px 2px ${COLORS.blue.sea};
         }
       }
     }

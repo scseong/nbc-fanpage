@@ -8,7 +8,6 @@ export default function LetterItem({
   avatar,
   content,
   createdAt,
-  writedTo,
   id,
 }) {
   return (

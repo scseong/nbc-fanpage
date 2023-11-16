@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import cardbg from 'assets/cardbg.jpg';
 import { timestampToDate } from 'utils/date';
 import { useNavigate } from 'react-router-dom';
+import * as S from './styles';
 
 export default function DetailLetter({ id, messages, setMessages }) {
   const [isEdit, setIsEdit] = useState(false);
-  const { nickname, avatar, content, createdAt, writedTo } = messages.filter(
+  const { nickname, content, createdAt, writedTo } = messages?.filter(
     (message) => message.id === id,
   )[0];
-  const [editContent, setEditConent] = useState(content);
+  const [editContent, setEditContent] = useState(content);
   const navigate = useNavigate();
+
   const handleEdit = () => {
     if (!isEdit) {
+      setIsEdit((prev) => !prev);
+      return;
+    }
+
+    if (content === editContent) {
+      window.alert('변경 사항이 없습니다.');
       setIsEdit((prev) => !prev);
       return;
     }
@@ -34,22 +40,30 @@ export default function DetailLetter({ id, messages, setMessages }) {
       setMessages((messages) =>
         messages.filter((message) => message.id !== id),
       );
-      navigate(-1);
+      navigate('/');
     }
   };
 
+  const handleChangeContent = (e) => {
+    if (e.target.value.length > 100) {
+      alert('over 100 characers');
+      return;
+    }
+    setEditContent(e.target.value);
+  };
+
   return (
-    <StDetail>
-      <StDetailContainer>
-        <StDetailHeader>
+    <S.Detail>
+      <S.DetailContainer>
+        <S.DetailHeader>
           <h2>NewJeans</h2>
           <span>No. {id.slice(0, 8)}</span>
-        </StDetailHeader>
-        <StDetailInfo>
-          <StDetailImg>
+        </S.DetailHeader>
+        <S.DetailInfo>
+          <S.DetailImg>
             <img src={require(`assets/${writedTo}.jpg`)} alt="" />
-          </StDetailImg>
-          <StDetailDesc>
+          </S.DetailImg>
+          <S.DetailDesc>
             <div>
               <h3>닉네임</h3>
               <p>{nickname}</p>
@@ -66,125 +80,27 @@ export default function DetailLetter({ id, messages, setMessages }) {
                 <textarea
                   cols="30"
                   rows="6"
+                  maxLength="100"
                   value={editContent}
-                  onChange={(e) => setEditConent(e.target.value)}
+                  onChange={handleChangeContent}
                 />
               ) : (
                 <p>{content}</p>
               )}
             </div>
-          </StDetailDesc>
-        </StDetailInfo>
-        <StDetailBtnBox>
-          <StDetailBtn onClick={handleEdit} type={isEdit ? 'edit' : 'default'}>
+          </S.DetailDesc>
+        </S.DetailInfo>
+        <S.DetailBtnBox>
+          <S.DetailBtn onClick={handleEdit} type={isEdit ? 'edit' : 'default'}>
             {isEdit ? '완료' : '수정'}
-          </StDetailBtn>
-
+          </S.DetailBtn>
           {!isEdit ? (
-            <StDetailBtn onClick={handleDelete} type="delete">
+            <S.DetailBtn onClick={handleDelete} type="delete">
               삭제
-            </StDetailBtn>
+            </S.DetailBtn>
           ) : undefined}
-        </StDetailBtnBox>
-      </StDetailContainer>
-    </StDetail>
+        </S.DetailBtnBox>
+      </S.DetailContainer>
+    </S.Detail>
   );
 }
-
-const StDetail = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StDetailContainer = styled.div`
-  position: relative;
-  padding: 2rem;
-  border: 1px solid #000;
-  border-radius: 10px;
-  overflow: hidden;
-
-  &:after {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    content: '';
-    background: url(${cardbg});
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-  }
-`;
-
-const StDetailHeader = styled.header`
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  font-weight: bold;
-
-  h2 {
-    font-size: 2rem;
-  }
-`;
-
-const StDetailInfo = styled.div`
-  display: flex;
-  width: 60vw;
-`;
-const StDetailImg = styled.div`
-  img {
-    border: 1px solid #000;
-  }
-`;
-const StDetailDesc = styled.div`
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 2;
-
-  div {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px dotted #000;
-    line-height: 2rem;
-  }
-
-  div:last-child {
-    flex-grow: 2;
-    max-width: 60vw;
-    p {
-      width: 100%;
-      word-break: break-all;
-    }
-    textarea {
-      padding: 1rem 0.1rem;
-      width: 100%;
-      font-size: 1.2rem;
-      line-height: 1.4rem;
-      resize: none;
-      word-break: break-all;
-    }
-  }
-`;
-
-const StDetailBtnBox = styled.div`
-  text-align: end;
-`;
-
-const StDetailBtn = styled.button`
-  padding: 5px;
-  border: 1px solid #000;
-  font-size: 1.2rem;
-  background-color: ${(props) => TYPE[props.type]};
-  cursor: pointer;
-`;
-
-const TYPE = {
-  edit: '#04AA6D',
-  delete: '#f44336',
-  default: 'white',
-};

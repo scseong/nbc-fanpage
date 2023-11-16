@@ -4,7 +4,7 @@ export const Letter = styled.div`
   margin-bottom: 20px;
   a {
     display: grid;
-    grid-template-columns: 100px 90%;
+    grid-template-columns: 10% 90%;
     width: 100%;
   }
   &:hover {
@@ -14,10 +14,17 @@ export const Letter = styled.div`
 
 export const LetterImg = styled.div`
   img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  }
+
+  @media screen and (max-width: 600px) {
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
 `;
 

@@ -7,6 +7,7 @@ export const MemberList = styled.div`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.1s ease-in-out;
   border: 5px double skyblue;
+  cursor: pointer;
 
   div > img {
     width: 150px;
