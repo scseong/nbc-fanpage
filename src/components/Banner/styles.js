@@ -12,7 +12,7 @@ export const StBanner = styled.section`
     background-size: 100% 100%;
 
     @media screen and (min-width: 768px) {
-      background-size: 100% 100%;
+      background-size: cover;
     }
 
     @media screen and (min-width: 2000px) {

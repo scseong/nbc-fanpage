@@ -37,3 +37,17 @@ export const Letter = styled.section`
     rotate: -3deg;
   }
 `;
+
+export const EmptyLetter = styled.div`
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2rem;
+`;
