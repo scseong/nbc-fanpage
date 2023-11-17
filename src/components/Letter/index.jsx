@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MEMBERS } from 'constants/member';
 import LetterItem from 'components/LetterItem';
 import * as S from './styles';
+import { LettersContext } from 'context/LetterContext';
 
-export default function Letter({ memberId, messages }) {
+export default function Letter() {
+  const { memberId, messages } = useContext(LettersContext);
+
   const memberData = MEMBERS.filter(
     (member) => member.englishName === memberId,
   )[0];

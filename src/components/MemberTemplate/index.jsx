@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Member from 'components/Member';
 import Letter from 'components/Letter';
-import { MEMBERS } from 'constants/member';
 import AddLetter from 'components/AddLetter';
 import useLocalStorage from 'hooks/useLocalStorage';
+import { MEMBERS } from 'constants/member';
+import { LettersContext } from 'context/LetterContext';
 
 export default function MemberTemplate() {
   const [memberId, setMemberId] = useState(MEMBERS[0].englishName);
@@ -15,10 +16,12 @@ export default function MemberTemplate() {
   };
 
   return (
-    <>
-      <Member memberId={memberId} onUpdate={handleUpdate} />
-      <Letter memberId={memberId} messages={messages} />
-      <AddLetter memberId={memberId} handleAdd={handleAdd} />
-    </>
+    <LettersContext.Provider
+      value={{ memberId, messages, handleUpdate, handleAdd }}
+    >
+      <Member />
+      <Letter />
+      <AddLetter />
+    </LettersContext.Provider>
   );
 }

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import defaultImg from 'assets/defaultUser.jpg';
 import { MEMBERS } from 'constants/member';
 import { v4 as uuid } from 'uuid';
 import * as S from './styles';
+import { LettersContext } from 'context/LetterContext';
 
-export default function AddLetter({ memberId, handleAdd }) {
+export default function AddLetter() {
+  const { memberId, handleAdd } = useContext(LettersContext);
   const member = MEMBERS.filter((m) => memberId === m.englishName)[0];
 
   const [message, setMessage] = useState({

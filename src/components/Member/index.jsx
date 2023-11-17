@@ -1,20 +1,15 @@
-import React from 'react';
+import React, { memo } from 'react';
 import MemberList from 'components/MemberList';
 import { MEMBERS } from 'constants/member';
 import { StSection } from './styles';
 
-export default function Member({ memberId, onUpdate }) {
+function Member() {
   return (
     <StSection>
       <h2>MEMBER</h2>
       <ul>
         {MEMBERS.map((member) => (
-          <MemberList
-            key={member.id}
-            id={member.englishName}
-            clicked={member.englishName === memberId}
-            onUpdate={onUpdate}
-          >
+          <MemberList key={member.id} id={member.englishName}>
             {member.englishName}
           </MemberList>
         ))}
@@ -22,3 +17,5 @@ export default function Member({ memberId, onUpdate }) {
     </StSection>
   );
 }
+
+export default memo(Member);

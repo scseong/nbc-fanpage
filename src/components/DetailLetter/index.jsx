@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DetailLetterItem from 'components/DetailLetterItem';
+import { LetterDetailContext } from 'context/LetterContext';
 import * as S from './styles';
 
-export default function DetailLetter({ id, messages, setMessages }) {
+export default function DetailLetter() {
+  const { id, messages, setMessages } = useContext(LetterDetailContext);
   const { nickname, content, createdAt, writedTo } = messages?.filter(
     (message) => message.id === id,
   )[0];

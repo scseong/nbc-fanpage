@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { memo, useContext } from 'react';
+import { LettersContext } from 'context/LetterContext';
 import * as S from './styles';
 
-export default function MemberList({ children: name, id, clicked, onUpdate }) {
-  const selectMember = () => onUpdate(id);
+function MemberList({ children: name, id }) {
+  const { memberId, handleUpdate } = useContext(LettersContext);
+  const selectMember = () => {
+    handleUpdate(id);
+  };
 
   return (
-    <S.MemberList onClick={selectMember} $clicked={clicked}>
+    <S.MemberList onClick={selectMember} $clicked={name === memberId}>
       <div>
         <img src={require(`assets/${name}.jpg`)} alt={name} />
         <p>{name}</p>
@@ -13,3 +17,5 @@ export default function MemberList({ children: name, id, clicked, onUpdate }) {
     </S.MemberList>
   );
 }
+
+export default memo(MemberList);
